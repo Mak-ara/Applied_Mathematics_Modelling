@@ -187,9 +187,9 @@ H_time_constant = tf(num, den);
 - **Torque (Block ii):** Gain = `KT`
 
 ### Parameter File
-Create `motor_params.m`:
+The motor constants are defined in `Constants.m`:
 ```matlab
-%% DC Motor Parameters
+%% DC Motor Parameters - Constants.m
 Ra = 2.0;      % Armature resistance (Ohms)
 La = 0.5;      % Armature inductance (H)
 Kb = 0.015;    % Back emf constant (V⋅s/rad)
@@ -224,39 +224,127 @@ fprintf('Motor parameters loaded successfully!\n');
 - **Continuous increase:** At steady-state velocity
 - **Final slope:** Represents steady angular velocity
 
+## Setup Instructions
+
+### Prerequisites
+
+**Required Software:**
+- MATLAB (R2018b or later recommended)
+- Simulink
+- Control System Toolbox
+
+**Recommended MATLAB Toolboxes:**
+- Simulink Control Design (for advanced analysis)
+- Signal Processing Toolbox (for signal analysis)
+
+### Installation
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/yourusername/Servomotor_Control.git
+   cd Servomotor_Control
+   ```
+
+2. **Open MATLAB:**
+   - Navigate to the project folder in MATLAB
+   - Or use `cd` command in MATLAB:
+   ```matlab
+   cd('path/to/Servomotor_Control')
+   ```
+
+3. **Verify installation:**
+   ```matlab
+   % Check if required toolboxes are installed
+   ver('simulink')
+   ver('control')
+   
+   % List current directory contents
+   ls
+   ```
+
+### First Time Setup
+
+1. **Load the motor parameters:**
+   ```matlab
+   Constants
+   ```
+   You should see: `Motor parameters loaded successfully!`
+
+2. **Open the Simulink model:**
+   ```matlab
+   open('Simulation.slx')
+   ```
+   Or double-click `Simulation.slx` in MATLAB's Current Folder window
+
+3. **Test the model:**
+   ```matlab
+   sim('Simulation')
+   ```
+
+### Troubleshooting Setup
+
+**Common Issues:**
+
+| Problem | Solution |
+|---------|----------|
+| "Cannot open Simulation.slx" | Ensure you have Simulink installed |
+| "Undefined function or variable" | Run `Constants` before simulation |
+| "License checkout failed" | Check MATLAB/Simulink license |
+| Model won't run | Check MATLAB version compatibility |
+
+**System Requirements:**
+- **RAM:** 4GB minimum, 8GB recommended
+- **Disk Space:** 500MB for MATLAB/Simulink + project files
+- **OS:** Windows 10/11, macOS 10.14+, or Linux
+
 ## Usage
 
 ### Running the Simulation
 
 1. **Load parameters:**
    ```matlab
-   motor_params
+   Constants
    ```
 
 2. **Run Simulink model:**
    ```matlab
-   sim('dc_servo_motor')
+   sim('Simulation')
    ```
 
-3. **Analyze results:**
+### Quick Start Guide
+
+**For new users:**
+
+1. **Clone and setup:**
+   ```bash
+   git clone https://github.com/yourusername/Servomotor_Control.git
+   ```
+
+2. **Open MATLAB and navigate to project folder**
+
+3. **Run the complete simulation:**
    ```matlab
-   analyze_results
+   Constants          % Load parameters
+   open('Simulation.slx')  % Open model
+   sim('Simulation')       % Run simulation
    ```
 
-### Modifying Parameters
+4. **View results in the Simulink scopes**
 
-To study different motor characteristics, modify values in `motor_params.m`:
+### Advanced Usage
+
+To study different motor characteristics, modify values in `Constants.m`:
 
 - **Increase Ra:** Slower response, higher damping
 - **Increase J:** Slower response, longer settling time  
 - **Increase Kb:** Better speed regulation, more damping
 - **Increase KT:** Higher torque capability, faster response
 
-### Validation
+#### Validation
 
 Compare Simulink results with analytical transfer function:
 ```matlab
-motor_params;
+Constants;  % Load parameters
 H_analytical = tf(KT, conv([1,0], conv([La,Ra],[J,B0])) + [0,0,0,Kb*KT]);
 step(H_analytical);
 ```
@@ -264,13 +352,20 @@ step(H_analytical);
 ## Files
 
 ```
-📁 DC_Motor_Project/
-├── 📄 motor_params.m          # Motor parameter definitions
-├── 📄 dc_servo_motor.slx      # Main Simulink model
-├── 📄 run_simulation.m        # Simulation runner script
-├── 📄 analyze_results.m       # Results analysis script
-└── 📄 README.md               # This documentation
+📁 Servomotor_Control/
+├── 📁 slprj/sim/varcache/Simulation/    # Simulink cache files
+├── 📄 Constants.m                       # Motor parameter definitions
+├── 📄 README.md                         # This documentation
+├── 📄 Simulation.slx                    # Main Simulink model
+└── 📄 Simulation.slxc                   # Simulink cache file (auto-generated)
 ```
+
+### File Descriptions
+
+- **`Simulation.slx`** - Main Simulink model containing the DC motor block diagram
+- **`Constants.m`** - Motor parameters and physical constants  
+- **`Simulation.slxc`** - Cache file created automatically by Simulink (can be ignored)
+- **`slprj/`** - Project cache directory created by Simulink (can be ignored)
 
 ## Key Physical Insights
 

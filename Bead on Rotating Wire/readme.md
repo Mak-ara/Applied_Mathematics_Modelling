@@ -310,18 +310,6 @@ The simulation framework enables investigation of parameter dependencies:
 - **Steeper wires (larger k):** Stronger radial restoring force, higher oscillation frequency
 - **Flatter wires (smaller k):** Weaker confinement, potential for unbounded motion at low ω
 
-### Limitations and Future Extensions
-
-The current simulation framework could be extended to investigate:
-
-1. **Damping Effects:** Addition of friction terms for realistic energy dissipation
-2. **Wire Flexibility:** Elastic deformation under bead loading
-3. **Multiple Beads:** Interaction dynamics and collective behavior
-4. **Non-uniform Rotation:** Time-varying ω(t) and stability analysis
-5. **Alternative Geometries:** Helical, sinusoidal, or arbitrary wire shapes
-
-The simulation results provide strong validation of the mathematical model while revealing the rich dynamics inherent in this classical mechanics system.
-
 ## Mathematical Concepts
 
 The analysis demonstrates the application of several advanced mathematical concepts:

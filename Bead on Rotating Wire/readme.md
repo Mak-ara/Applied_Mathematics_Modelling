@@ -393,14 +393,3 @@ The nonlinear ODE can be solved numerically using standard methods:
 - **Perturbation theory** for small amplitude oscillations
 
 
-## Contributing
-
-Contributions to this mathematical analysis are welcome. The following areas would benefit from additional work:
-
-### Suggested Improvements
-- **Stability Analysis:** Linear stability of equilibrium points
-- **Perturbation Methods:** Asymptotic solutions for specific wire geometries
-- **Numerical Methods:** Implementation of specialized integration schemes
-- **Experimental Validation:** Comparison with physical measurements
-- **Hamiltonian Formulation:** Alternative analytical approach
-

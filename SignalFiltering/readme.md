@@ -181,7 +181,7 @@ y[n] = ∑_{k=0}^M b_k x[n-k] - ∑_{k=1}^N a_k y[n-k]
 
 ## 7. Code Implementation
 
-See `signal_filtering_demo.py` for a complete Python implementation demonstrating all four governing equations.
+See `signalfiltering.py` for a complete Python implementation demonstrating all four governing equations.
 
 **Key Features:**
 - Time and frequency domain filtering
@@ -191,7 +191,7 @@ See `signal_filtering_demo.py` for a complete Python implementation demonstratin
 
 **Usage:**
 ```bash
-python signal_filtering_demo.py
+python signalfiltering.py
 ```
 
 ---
